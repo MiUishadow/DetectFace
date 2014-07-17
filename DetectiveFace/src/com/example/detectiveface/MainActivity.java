@@ -1,6 +1,8 @@
 package com.example.detectiveface;
 
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import com.example.util.GetAccessToken;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.JsonReader;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -54,6 +57,23 @@ public class MainActivity extends Activity{
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
 			String access_token = (String) textview.getText();
+			JsonReader reader = new JsonReader(new StringReader(access_token));
+			String name = null;
+			try {
+				reader.beginObject();
+				while(reader.hasNext()){
+					name = reader.nextName();
+					if("access_token".equals(name)){
+						access_token = reader.nextString();
+					}else {
+						reader.skipValue();
+					}
+				}
+				reader.endObject();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			DetectImage dm = new DetectImage();
 			List<NameValuePair> pargams = new LinkedList<NameValuePair>();
 			pargams.add(new BasicNameValuePair("access_token", access_token));

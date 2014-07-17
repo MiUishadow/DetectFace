@@ -24,7 +24,7 @@ public class DetectImage extends AsyncTask<List<NameValuePair>, Integer, String>
 		HttpClient client = HttpClientFactory.getNewHttpClient();
 		HttpPost post = null;
 		HttpResponse response = null;
-		StringBuffer sb = null;
+		StringBuffer sb = new StringBuffer();
 		try {
 			post = new HttpPost("https://openapi.baidu.com/rest/2.0/media/v1/face/detect");
 			post.setEntity(new UrlEncodedFormEntity(arg0[0],"UTF-8"));
