@@ -13,4 +13,9 @@
         android:id="@+id/getAccess"
         android:text="@string/Begin"
         />
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Detect"
+        android:text="@string/detect"
+        />
 </LinearLayout>
