@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="app_name">DetectiveFace</string>
+    <string name="Begin">获取AccessToken</string>
+</resources>
